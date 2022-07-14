@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
+
+* {
+    font-family: 'Roboto Condensed', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: default;
+    caret-color: transparent;
+}
+
+body {
+    background-color: #fed6bc;
+}
+
+#root {
+    display: flex;
+    justify-content: center;
+}
+
+.App {
+    width: 80%;
+}
+
+.header {
+    height: 100px;
+    background-color: #fffadd;
+    margin: 10px 0;
+    padding: 10px 30px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.header-links {
+    display: flex;
+    align-items: center;
+}
+
+.github-logo {
+    width: 40px;
+    margin-left: 10px;
+}
+
+.quotes {
+    padding: 20px 50px;
+    background-color: #fffadd;
+    border-radius: 10px;
+}
+
+.quotes-tittle {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.quotes-items {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.btn {
+    height: 45px;
+    padding: 10px;
+    margin-right: 10px;
+    background-color: #fed6bc;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.btn:hover {
+    background-color: #fab486;
+}
+
+.btn-big {
+    margin: 0;
+    width: 100%;
+}
+
+.btn-tbl {
+    height: 30px;
+    padding: 5px;
+    margin-right: 10px;
+    background-color: #e3b392;
+    width: 150px;
+    text-decoration: none;
+    text-align: center;
+    color: #ffecdf;
+}
+
+.quote {
+    display: flex;
+    width: 400px;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.quote-input {
+    margin-right: 10px;
+}
+
+.text-notice {
+    color: #e3b392;
+    font-weight: 900;
+    font-size: 20px;
+    margin: auto;
+    margin-top: 30px;
+    width: fit-content;
+}
+
+.table-block-export {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-exp {
+    color: #e3b392;
+    font-weight: 900;
+    font-size: 20px;
+    width: fit-content;
+    margin-right: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px auto;
+}
+
+thead {
+    background-color: #e3b392;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 5px 15px;
+}

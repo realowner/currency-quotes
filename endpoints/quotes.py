@@ -1,5 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi.responses import FileResponse
 from typing import List
+
+import os.path
 
 import requests
 import json
@@ -22,6 +25,24 @@ async def insert_from_api(quotes: QuotesRepository=Depends(get_quotes_repository
     if delete_result:
         return await quotes.create_many(quot=quot)
     raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Data cant be updated!")
+
+@router.get('/exportpdf')
+async def export_pdf():
+    if os.path.exists('exportfiles/curr_quotes.pdf'):
+        return FileResponse(path='exportfiles/curr_quotes.pdf', media_type='application/octet-stream', filename='curr_quotes.pdf')
+    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="File does not exist!")
+
+@router.get('/exportcsv')
+async def export_csv():
+    if os.path.exists('exportfiles/curr_quotes.csv'):
+        return FileResponse(path='exportfiles/curr_quotes.csv', media_type='application/octet-stream', filename='curr_quotes.csv')
+    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="File does not exist!")
+
+@router.get('/exportxlsx')
+async def export_xlsx():
+    if os.path.exists('exportfiles/curr_quotes.xlsx'):
+        return FileResponse(path='exportfiles/curr_quotes.xlsx', media_type='application/octet-stream', filename='curr_quotes.xlsx')
+    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="File does not exist!")
 
 @router.post('/', response_model=Quotes)
 async def create_quotes(quot: QuotesIn, quotes: QuotesRepository=Depends(get_quotes_repository),):

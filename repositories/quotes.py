@@ -2,6 +2,10 @@ from .base import BaseRepository
 from db.quotes import quotes
 from models.quotes import Quotes, QuotesIn
 
+from core.export_pdf import quotes_pdf
+from core.export_csv import quotes_csv
+from core.export_xlsx import quotes_xlsx
+
 from typing import Dict, List, Optional
 from datetime import datetime
 
@@ -24,7 +28,12 @@ class QuotesRepository(BaseRepository):
     # Достаем по именам
     async def get_by_name(self, name_list: List) -> List[Quotes]:
         query = quotes.select().filter(quotes.c.name.in_(name_list))
-        return await self.database.fetch_all(query)
+        response = await self.database.fetch_all(query)
+        if len(response) != 0:
+            quotes_pdf(response)
+            quotes_csv(response)
+            quotes_xlsx(response)
+        return response
     
     # Создаем данные
     async def create_quotes(self, quot: QuotesIn) -> Quotes:
